@@ -7,8 +7,20 @@ namespace Gra
             InitializeComponent();
         }
 
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //walnij dydelf
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //nyan cat
+        }
+
         private void button1_Click(object sender, EventArgs e)
         {
+            //pasjans
             Form2 form2 = new Form2();
             form2.Show();
         }
