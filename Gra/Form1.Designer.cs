@@ -39,19 +39,17 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(442, 60);
-            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Location = new Point(354, 48);
             label1.Name = "label1";
-            label1.Size = new Size(107, 25);
+            label1.Size = new Size(89, 20);
             label1.TabIndex = 0;
             label1.Text = "Wybierz gre";
             // 
             // button1
             // 
-            button1.Location = new Point(161, 238);
-            button1.Margin = new Padding(4);
+            button1.Location = new Point(129, 190);
             button1.Name = "button1";
-            button1.Size = new Size(118, 36);
+            button1.Size = new Size(94, 29);
             button1.TabIndex = 1;
             button1.Text = "Pasjans";
             button1.UseVisualStyleBackColor = true;
@@ -59,10 +57,9 @@
             // 
             // button2
             // 
-            button2.Location = new Point(423, 238);
-            button2.Margin = new Padding(4);
+            button2.Location = new Point(338, 190);
             button2.Name = "button2";
-            button2.Size = new Size(157, 36);
+            button2.Size = new Size(126, 29);
             button2.TabIndex = 2;
             button2.Text = "Walnij dydelfa";
             button2.UseVisualStyleBackColor = true;
@@ -70,10 +67,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(716, 238);
-            button3.Margin = new Padding(4);
+            button3.Location = new Point(573, 190);
             button3.Name = "button3";
-            button3.Size = new Size(118, 36);
+            button3.Size = new Size(94, 29);
             button3.TabIndex = 3;
             button3.Text = "Nyan Cat";
             button3.UseVisualStyleBackColor = true;
@@ -81,9 +77,10 @@
             // 
             // button4
             // 
-            button4.Location = new Point(252, 331);
+            button4.Location = new Point(202, 265);
+            button4.Margin = new Padding(2, 2, 2, 2);
             button4.Name = "button4";
-            button4.Size = new Size(94, 29);
+            button4.Size = new Size(75, 37);
             button4.TabIndex = 4;
             button4.Text = "Zaloguj sie";
             button4.UseVisualStyleBackColor = true;
@@ -91,25 +88,26 @@
             // 
             // button5
             // 
-            button5.Location = new Point(438, 331);
+            button5.Location = new Point(350, 265);
+            button5.Margin = new Padding(2, 2, 2, 2);
             button5.Name = "button5";
-            button5.Size = new Size(94, 29);
+            button5.Size = new Size(75, 37);
             button5.TabIndex = 5;
             button5.Text = "Ranking";
             button5.UseVisualStyleBackColor = true;
+            button5.Click += button5_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(10F, 25F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(783, 415);
             Controls.Add(button5);
             Controls.Add(button4);
             Controls.Add(button3);
             Controls.Add(button2);
             Controls.Add(button1);
             Controls.Add(label1);
-            Margin = new Padding(4);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
