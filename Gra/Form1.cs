@@ -6,5 +6,20 @@ namespace Gra
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            //pasjans
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            //walnij dydelf
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //nyan cat
+        }
     }
 }
