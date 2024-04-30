@@ -6,5 +6,11 @@ namespace Gra
         {
             InitializeComponent();
         }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            NyanCat nowe_okno = new NyanCat(this);
+            nowe_okno.ShowDialog();
+        }
     }
 }
