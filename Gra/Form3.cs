@@ -53,24 +53,17 @@ namespace Gra
                 MessageBox.Show("Score: " + score, "Game Over");
                 this.Close();
             }
-            if (score == total - 4)
+            if (life==0)
             {
                 game_timer.Stop();
                 MessageBox.Show("Score: " + score, "Game Over");
                 this.Close();
             }
-            else if (score == total - 3)
-            {
-                life = 1;
-            }
-            else if (score == total - 2)
-            {
-                life = 2;
-            }
-            else if (score == total - 1)
-            {
-                life = 3;
-            }
+            Renew();
+        }
+
+        private void Renew()
+        {
             if (seconds == 300)
             {
                 speed = 7;
@@ -119,6 +112,7 @@ namespace Gra
                 {
                     pictureBox.Visible = true;
                     total++;
+                    life = score - total + 1 + 4;
                 }
             }
         }
