@@ -8,6 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using System.Reflection.Emit;
+using System.Media;
+using System.Numerics;
 
 
 namespace Gra
@@ -18,13 +21,13 @@ namespace Gra
         private List<PictureBox> pictureBoxes = new List<PictureBox>();
         private List<PictureBox> Donuts = new List<PictureBox>();
         private List<PictureBox> zdobyteDonuts = new List<PictureBox>();
-        PictureBox Bigdonut = new PictureBox();
         bool koniec_gry = false;
         int serca = 4;
         int score = 0;
         private Random random = new Random();
         private int stepSize = 7; // Rozmiar kroku przesunięcia
         private int milisek = 50;
+        
         public NyanCat(Form1 parent)
         {
             InitializeComponent();
@@ -37,6 +40,15 @@ namespace Gra
             this.BackgroundImage = backgroundImage;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.KeyDown += Nyan_KeyDown;
+
+            PlayMusic("NyanCatMusic.wav");
+        }
+        SoundPlayer musicPlayer = new SoundPlayer();
+        public void PlayMusic(string filename)
+        {
+            
+            musicPlayer.SoundLocation = filename;
+            musicPlayer.Play();
         }
 
         private void InitializeMeteors()
@@ -84,14 +96,13 @@ namespace Gra
             }
         }
 
-        int numberOfDonuts = 9;
         private void InitializeDonuts()
         {
             int currentY = 175;
             int spacing = 50;
             int countPerGroup = 1;
 
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 PictureBox donut = new PictureBox();
                 donut.Image = zasoby.donut;
@@ -129,6 +140,19 @@ namespace Gra
             timer1.Interval = milisek; // Interwał w milisekundach (czas pomiędzy kolejnymi wywołaniami Timer_Tick)
             timer1.Tick += Timer_Tick;
             timer1.Start();
+
+            //przyspieszanie meteorow co minutke
+            timer2 = new System.Windows.Forms.Timer();
+            timer2.Interval = 30000;
+            timer2.Tick += Timer_Tick2;
+            timer2.Start();
+        }
+        private void Timer_Tick2(object sender, EventArgs e)
+        {
+            // Zwiększenie prędkości przesuwania meteorów
+            stepSize += 1; // Możesz dostosować wartość, o którą chcesz zwiększyć prędkość
+
+            // Możesz dodać tutaj kod do aktualizacji prędkości przesuwania meteorów na formularzu
         }
 
         private void Timer_Tick(object sender, EventArgs e)
@@ -138,7 +162,7 @@ namespace Gra
             {
                 int currentX = pictureBox.Location.X;
                 //rozne szybkosci meteorow dla trudnosci
-                if(interval%2 == 0)
+                if (interval % 2 == 0)
                 {
                     // przesuwanie w prawo o stepSize pikseli
                     pictureBox.Location = new Point(currentX + stepSize, pictureBox.Location.Y);
@@ -171,31 +195,15 @@ namespace Gra
                     score++;
                     string scoreText = score.ToString();
                     scoreLabel.Text = scoreText;
-                    if (zdobyteDonuts.Count == 3)
+                    if (zdobyteDonuts.Count%4 == 0)
                     {
                         InitializeDonuts();
-                    }
-                    if (zdobyteDonuts.Count == 6)
-                    {
-                        InitializeDonuts();
-                    }
-                    if(zdobyteDonuts.Count == 1)
-                    {
-                        
-                        Bigdonut.Image = zasoby.donutt;
-                        Bigdonut.SizeMode = PictureBoxSizeMode.StretchImage;
-                        Bigdonut.Size = new Size(50, 50);
-                        Bigdonut.Location = new Point(425, 275);
-                        Controls.Add(Bigdonut);
                     }
                 }
             }
-            if (Bigdonut.Bounds.IntersectsWith(nyan.Bounds))
+            if (tecza.Bounds.IntersectsWith(nyan.Bounds))
             {
-                Bigdonut.Visible = false;
-                score++;
-                string scoreText = score.ToString();
-                scoreLabel.Text = scoreText;
+                nyan.Location = new Point(425, 475);
             }
 
         }
@@ -238,8 +246,8 @@ namespace Gra
             serca--;
             if (serca > 0)
             {
-                if(serca == 3) 
-                { 
+                if (serca == 3)
+                {
                     serce1.Image = zasoby.serce_biale;
                     serce1.SizeMode = PictureBoxSizeMode.StretchImage;
                 }
@@ -256,8 +264,19 @@ namespace Gra
             }
             else
             {
+                serce4.Image = zasoby.serce_biale;
+                serce4.SizeMode = PictureBoxSizeMode.StretchImage;
                 koniec_gry = true;
                 SprawdzKoniecGry();
+            }
+        }
+
+        private void HideControls(Control control)
+        {
+            foreach (Control c in control.Controls)
+            {
+                HideControls(c); // Rekurencyjnie ukrywaj kontrolki w kontenerach podrzędnych
+                c.Visible = false;
             }
         }
 
@@ -267,18 +286,23 @@ namespace Gra
             {
                 timer1.Stop();
                 this.KeyDown -= Nyan_KeyDown;
-                // schowanie pictureboxow
-                foreach (PictureBox picturebox in this.Controls.OfType<PictureBox>())
-                {
-                    picturebox.Visible = false;
-                }
-                foreach (Label label in this.Controls.OfType<Label>())
-                {
-                    label.Visible = false;
-                }
+
+                // ukrywanie wszystkich kontrolek
+                HideControls(this);
+
                 Image backgroundImage = zasoby.game_over;
                 this.BackgroundImage = backgroundImage;
                 this.BackgroundImageLayout = ImageLayout.Stretch;
+                System.Windows.Forms.Label labelScore = new System.Windows.Forms.Label();
+                //Label labelScore = new Label();
+                labelScore.Text = "SCORE: " + score.ToString();
+                labelScore.Location = new Point(375, 400);
+                labelScore.AutoSize = true;
+                labelScore.Font = new Font(labelScore.Font.FontFamily, 18, FontStyle.Bold); // Ustawienie pogrubionego fontu o rozmiarze 16
+                labelScore.BackColor = SystemColors.HotTrack; // Ustawienie koloru tła na HotTrack
+                this.Controls.Add(labelScore);
+                musicPlayer.Stop();
+                musicPlayer.Dispose(); // Zwolnienie zasobów
             }
         }
 

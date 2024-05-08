@@ -37,11 +37,16 @@
             serce3 = new PictureBox();
             label1 = new Label();
             scoreLabel = new Label();
+            serce4 = new PictureBox();
+            tecza = new PictureBox();
+            timer2 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)nyan).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)serce1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)serce2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)serce3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)serce4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)tecza).BeginInit();
             SuspendLayout();
             // 
             // nyan
@@ -67,7 +72,7 @@
             // serce1
             // 
             serce1.Image = Properties.Resources.serce;
-            serce1.Location = new Point(740, 12);
+            serce1.Location = new Point(694, 12);
             serce1.Name = "serce1";
             serce1.Size = new Size(40, 40);
             serce1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -77,7 +82,7 @@
             // serce2
             // 
             serce2.Image = Properties.Resources.serce;
-            serce2.Location = new Point(786, 12);
+            serce2.Location = new Point(740, 12);
             serce2.Name = "serce2";
             serce2.Size = new Size(40, 40);
             serce2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -87,7 +92,7 @@
             // serce3
             // 
             serce3.Image = Properties.Resources.serce;
-            serce3.Location = new Point(832, 12);
+            serce3.Location = new Point(786, 12);
             serce3.Name = "serce3";
             serce3.Size = new Size(40, 40);
             serce3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -97,6 +102,7 @@
             // label1
             // 
             label1.AutoSize = true;
+            label1.BackColor = SystemColors.HotTrack;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
             label1.Location = new Point(58, 22);
             label1.Name = "label1";
@@ -107,17 +113,40 @@
             // scoreLabel
             // 
             scoreLabel.AutoSize = true;
+            scoreLabel.BackColor = SystemColors.HotTrack;
             scoreLabel.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point, 238);
             scoreLabel.Location = new Point(83, 22);
             scoreLabel.Name = "scoreLabel";
             scoreLabel.Size = new Size(0, 30);
             scoreLabel.TabIndex = 14;
             // 
+            // serce4
+            // 
+            serce4.Image = Properties.Resources.serce;
+            serce4.Location = new Point(832, 12);
+            serce4.Name = "serce4";
+            serce4.Size = new Size(40, 40);
+            serce4.SizeMode = PictureBoxSizeMode.StretchImage;
+            serce4.TabIndex = 15;
+            serce4.TabStop = false;
+            // 
+            // tecza
+            // 
+            tecza.Image = Properties.Resources.tecza;
+            tecza.Location = new Point(0, 165);
+            tecza.Name = "tecza";
+            tecza.Size = new Size(918, 10);
+            tecza.SizeMode = PictureBoxSizeMode.StretchImage;
+            tecza.TabIndex = 16;
+            tecza.TabStop = false;
+            // 
             // NyanCat
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(884, 561);
+            Controls.Add(tecza);
+            Controls.Add(serce4);
             Controls.Add(scoreLabel);
             Controls.Add(label1);
             Controls.Add(serce3);
@@ -132,6 +161,8 @@
             ((System.ComponentModel.ISupportInitialize)serce1).EndInit();
             ((System.ComponentModel.ISupportInitialize)serce2).EndInit();
             ((System.ComponentModel.ISupportInitialize)serce3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)serce4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)tecza).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -145,5 +176,8 @@
         private PictureBox serce3;
         private Label label1;
         private Label scoreLabel;
+        private PictureBox serce4;
+        private PictureBox tecza;
+        private System.Windows.Forms.Timer timer2;
     }
 }
