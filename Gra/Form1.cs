@@ -2,6 +2,7 @@ namespace Gra
 {
     public partial class Form1 : Form
     {
+        User currUser = new User();
         public Form1()
         {
             InitializeComponent();
@@ -29,7 +30,8 @@ namespace Gra
 
         private void button4_Click(object sender, EventArgs e)
         {
-
+            Form4 form4 = new Form4();
+            form4.Show();
         }
     }
 }
