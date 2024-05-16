@@ -23,7 +23,6 @@ namespace Gra
         public int speed3;
         public int speed4;
         public int total = 0;
-        public int clicked = 0;
         public int score = 0;
         public int life = 4;
 
@@ -70,11 +69,7 @@ namespace Gra
 
         private void Renew()
         {
-            if (seconds == 300)
-            {
-                speed = 7;
-                speed2 = 5;
-            }
+
             //renewal
             if (seconds % speed == 0)
                 GenerateDydelf();
@@ -134,7 +129,6 @@ namespace Gra
         {
             Random rand = new Random();
             int index = rand.Next(pictureBoxes.Count);
-            //activeBoxes.Add(index);
             PictureBox pictureBox = pictureBoxes.ElementAtOrDefault(index);
             activeBoxes.Add(pictureBox);
             if (pictureBox != null)
@@ -155,7 +149,6 @@ namespace Gra
         {
             Random rand = new Random();
             int index = rand.Next(pictureBoxes.Count);
-            //activeBoxes.Add(index);
             PictureBox pictureBox = pictureBoxes.ElementAtOrDefault(index);
             activeBoxes.Add(pictureBox);
             if (pictureBox != null)
@@ -174,7 +167,6 @@ namespace Gra
 
         private void Box_Click(object sender, EventArgs e)
         {
-            clicked++;
             PictureBox box = sender as PictureBox;
             activeBoxes.Remove(box);
             if (box.Visible)
