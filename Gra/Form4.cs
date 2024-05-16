@@ -23,6 +23,10 @@ namespace Gra
         public string nick;
         User usr = new User();
         public List<User> list = new List<User>();
+        // Deklaracja delegata do przekazywania danych
+        public delegate void DataPassedEventHandler(string nick, int score);
+        // Deklaracja zdarzenia wywoływanego po przekazaniu danych
+        public event DataPassedEventHandler DataPassed;
         public Form4()
         {
             InitializeComponent();
@@ -77,13 +81,13 @@ namespace Gra
             this.Close();
         }
 
-        static List<User> LoadData(string filename)
+        public static List<User> LoadData(string filename)
         {
             List<User> users = new List<User>();
             var config = new CsvConfiguration(CultureInfo.InvariantCulture)
             {
                 Delimiter = ",",
-                HasHeaderRecord = true,
+                HasHeaderRecord = false,
             };
 
             using (var reader = new StreamReader(filename))
@@ -99,11 +103,17 @@ namespace Gra
 
         private void zatwierdz_Click(object sender, EventArgs e)
         {
-            //przypisz odpowiednie wartosci jesli np uztykownik istnieje, ustaw punkty
-            //przeslij dane obiektu do formualarza glownego
-            //w formularzu glownym przypisz do obiektu currentuser nick i punkty
-            //po kazdej grze dodawaj punkty do uzytkownika i uaktualniaj liste w programie i w csv
-            //wyswietl?
+            int score = 0;
+            foreach(User u in list)
+            {
+                if (u.Nickname == nick)
+                {
+                    score = u.Score; break;
+                }
+            }
+            DataPassed?.Invoke(nick, score);
+
+            this.Close();
         }
     }
 }

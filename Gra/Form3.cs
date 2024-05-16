@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Gra.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,14 @@ namespace Gra
     public partial class Form3 : Form
     {
         public List<PictureBox> pictureBoxes = new List<PictureBox>();
-        public Queue<int> activeBoxes = new Queue<int>();
+        public List<PictureBox> activeBoxes = new List<PictureBox>();
         public int seconds = 0;
         public int speed;
         public int speed2;
+        public int speed3;
+        public int speed4;
         public int total = 0;
+        public int clicked = 0;
         public int score = 0;
         public int life = 4;
 
@@ -39,6 +43,8 @@ namespace Gra
             foreach (PictureBox pictureBox in pictureBoxes)
             {
                 pictureBox.Click += Box_Click;
+                pictureBox.Image = Resources.dydelf;
+                pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
             }
         }
 
@@ -53,7 +59,7 @@ namespace Gra
                 MessageBox.Show("Score: " + score, "Game Over");
                 this.Close();
             }
-            if (life==0)
+            if (life == 0)
             {
                 game_timer.Stop();
                 MessageBox.Show("Score: " + score, "Game Over");
@@ -76,8 +82,29 @@ namespace Gra
             {
                 if (activeBoxes.Count != 0)
                 {
-                    PictureBox pictureBox = pictureBoxes.ElementAtOrDefault(activeBoxes.Dequeue());
+                    PictureBox pictureBox = activeBoxes[0];
                     pictureBox.Visible = false;
+                    life--;
+                }
+                else
+                {
+                    foreach (PictureBox pictureBox in pictureBoxes)
+                    {
+                        pictureBox.Visible = false;
+                    }
+                }
+            }
+
+            //drugi zwierzak lepiej punktowany
+            if (seconds % speed3 == 0)
+                GenerateLemur();
+            if (seconds % speed4 == 0)
+            {
+                if (activeBoxes.Count != 0)
+                {
+                    PictureBox pictureBox = activeBoxes[0];
+                    pictureBox.Visible = false;
+                    life--;
                 }
                 else
                 {
@@ -94,9 +121,12 @@ namespace Gra
             seconds = 600;
             score = 0;
             speed = 8;
-            speed2 = 10;
+            speed2 = 12;
+            speed3 = 14;
+            speed4 = 15;
             life = 4;
             game_timer.Start();
+            dissapearance_timer.Start();
             GenerateDydelf();
         }
 
@@ -104,38 +134,84 @@ namespace Gra
         {
             Random rand = new Random();
             int index = rand.Next(pictureBoxes.Count);
-            activeBoxes.Enqueue(index);
+            //activeBoxes.Add(index);
             PictureBox pictureBox = pictureBoxes.ElementAtOrDefault(index);
+            activeBoxes.Add(pictureBox);
             if (pictureBox != null)
             {
                 if (pictureBox.Visible == false)
                 {
+                    pictureBox.Image = Resources.dydelf;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Tag = "dydelf";
                     pictureBox.Visible = true;
                     total++;
-                    life = score - total + 1 + 4;
+
+                }
+            }
+        }
+
+        public void GenerateLemur()
+        {
+            Random rand = new Random();
+            int index = rand.Next(pictureBoxes.Count);
+            //activeBoxes.Add(index);
+            PictureBox pictureBox = pictureBoxes.ElementAtOrDefault(index);
+            activeBoxes.Add(pictureBox);
+            if (pictureBox != null)
+            {
+                if (pictureBox.Visible == false)
+                {
+                    pictureBox.Image = Resources.lemur;
+                    pictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
+                    pictureBox.Tag = "lemur";
+                    pictureBox.Visible = true;
+                    total++;
+
                 }
             }
         }
 
         private void Box_Click(object sender, EventArgs e)
         {
+            clicked++;
             PictureBox box = sender as PictureBox;
+            activeBoxes.Remove(box);
             if (box.Visible)
             {
                 box.Visible = false;
-                score++;
+
+                // Porównywanie za pomocą tagów
+                if (box.Tag != null && box.Tag.ToString() == "lemur")
+                {
+                    score += 3;
+                }
+                else if (box.Tag != null && box.Tag.ToString() == "dydelf")
+                {
+                    score++;
+                }
+                else
+                {
+                    score++;
+                }
             }
         }
 
+
         private void dissapearance_timer_Tick(object sender, EventArgs e)
         {
-
+            
 
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void lifeLabel_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -143,9 +143,19 @@ namespace Gra.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap istockphoto_996288992_612x612 {
+        internal static System.Drawing.Bitmap dydelf {
             get {
-                object obj = ResourceManager.GetObject("istockphoto-996288992-612x612", resourceCulture);
+                object obj = ResourceManager.GetObject("dydelf", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lemur {
+            get {
+                object obj = ResourceManager.GetObject("lemur", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

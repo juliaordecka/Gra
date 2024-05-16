@@ -131,7 +131,7 @@
             // pictureBox1
             // 
             pictureBox1.Dock = DockStyle.Fill;
-            pictureBox1.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox1.Image = Properties.Resources.dydelf;
             pictureBox1.Location = new Point(5, 5);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(183, 198);
@@ -143,7 +143,7 @@
             // pictureBox2
             // 
             pictureBox2.Dock = DockStyle.Fill;
-            pictureBox2.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox2.Image = Properties.Resources.dydelf;
             pictureBox2.Location = new Point(196, 5);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(183, 198);
@@ -155,7 +155,7 @@
             // pictureBox3
             // 
             pictureBox3.Dock = DockStyle.Fill;
-            pictureBox3.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox3.Image = Properties.Resources.dydelf;
             pictureBox3.Location = new Point(387, 5);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(183, 198);
@@ -167,7 +167,7 @@
             // pictureBox4
             // 
             pictureBox4.Dock = DockStyle.Fill;
-            pictureBox4.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox4.Image = Properties.Resources.dydelf;
             pictureBox4.Location = new Point(578, 5);
             pictureBox4.Name = "pictureBox4";
             pictureBox4.Size = new Size(184, 198);
@@ -179,7 +179,7 @@
             // pictureBox5
             // 
             pictureBox5.Dock = DockStyle.Fill;
-            pictureBox5.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox5.Image = Properties.Resources.dydelf;
             pictureBox5.Location = new Point(5, 211);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(183, 198);
@@ -191,7 +191,7 @@
             // pictureBox6
             // 
             pictureBox6.Dock = DockStyle.Fill;
-            pictureBox6.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox6.Image = Properties.Resources.dydelf;
             pictureBox6.Location = new Point(196, 211);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(183, 198);
@@ -203,7 +203,7 @@
             // pictureBox7
             // 
             pictureBox7.Dock = DockStyle.Fill;
-            pictureBox7.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox7.Image = Properties.Resources.dydelf;
             pictureBox7.Location = new Point(387, 211);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(183, 198);
@@ -216,7 +216,7 @@
             // 
             pictureBox8.Dock = DockStyle.Fill;
             pictureBox8.Enabled = false;
-            pictureBox8.Image = Properties.Resources.istockphoto_996288992_612x612;
+            pictureBox8.Image = Properties.Resources.dydelf;
             pictureBox8.Location = new Point(578, 211);
             pictureBox8.Name = "pictureBox8";
             pictureBox8.Size = new Size(184, 198);
@@ -237,7 +237,7 @@
             // 
             // dissapearance_timer
             // 
-            dissapearance_timer.Interval = 2000;
+            dissapearance_timer.Interval = 1000;
             dissapearance_timer.Tick += dissapearance_timer_Tick;
             // 
             // label3
@@ -268,6 +268,7 @@
             lifeLabel.Size = new Size(27, 32);
             lifeLabel.TabIndex = 10;
             lifeLabel.Text = "4";
+            lifeLabel.Click += lifeLabel_Click;
             // 
             // Form3
             // 
