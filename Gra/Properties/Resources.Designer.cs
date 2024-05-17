@@ -67,6 +67,7 @@ namespace Gra.Properties {
         internal static System.Drawing.Bitmap _1 {
             get {
                 object obj = ResourceManager.GetObject("_1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
 
@@ -84,6 +85,7 @@ namespace Gra.Properties {
         internal static System.Drawing.Bitmap _2 {
             get {
                 object obj = ResourceManager.GetObject("_2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         internal static System.Drawing.Bitmap nyancat {
@@ -99,6 +101,7 @@ namespace Gra.Properties {
         internal static System.Drawing.Bitmap _3 {
             get {
                 object obj = ResourceManager.GetObject("_3", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         internal static System.Drawing.Bitmap serce {
@@ -184,6 +187,7 @@ namespace Gra.Properties {
         internal static System.Drawing.Bitmap x {
             get {
                 object obj = ResourceManager.GetObject("x", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         internal static System.Drawing.Bitmap tecza {

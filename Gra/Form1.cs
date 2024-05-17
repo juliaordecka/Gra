@@ -38,6 +38,7 @@ namespace Gra
             Form4 form4 = new Form4();
             form4.DataPassed += Form4_DataPassed;
             form4.Show();
+        }
 
         private void button3_Click(object sender, EventArgs e)
         {

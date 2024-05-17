@@ -40,22 +40,24 @@ namespace Gra
             this.BackgroundImage = backgroundImage;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.KeyDown += Nyan_KeyDown;
-
             PlayMusic("NyanCatMusic.wav");
+            this.FormClosed += new FormClosedEventHandler(NyanCat_FormClosed);
         }
         SoundPlayer musicPlayer = new SoundPlayer();
         public void PlayMusic(string filename)
         {
-            
             musicPlayer.SoundLocation = filename;
             musicPlayer.Play();
         }
 
+        private void NyanCat_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            musicPlayer.Stop();
+        }
+
         private void InitializeMeteors()
         {
-
-            int numberOfPictureBoxes = 18; // Ustaw liczbę PictureBoxów
-
+            int numberOfPictureBoxes = 18; // liczba PictureBoxów
             int currentY = 175; // Początkowa wartość x dla pierwszych trzech PictureBoxów
             int spacing = 50; // Odległość między grupami PictureBoxów
             int countPerGroup = 3; // Ilość PictureBoxów w każdej grupie
