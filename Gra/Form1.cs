@@ -6,9 +6,6 @@ namespace Gra
         public int SCORE = 0;
         public string RODZAJ = "";
 
-        User currUser = new User();
-        public List<User> users = new List<User>();
-
         public Form1()
         {
             InitializeComponent();
@@ -28,20 +25,9 @@ namespace Gra
             Form2 form2 = new Form2(this);
             form2.Show();
         }
-        private void Form4_DataPassed(string nick, int score)
-        {
-            currUser.Nickname = nick; //dane uzytkownika
-            currUser.Score = score;
-            label2.Text = nick.ToString();
-            //po kazdej grze dodawaj punkty do uzytkownika i uaktualniaj liste w programie i w csv
-            //wyswietl?
-        }
 
         private void button4_Click(object sender, EventArgs e)
         {
-            //Form4 form4 = new Form4();
-            //form4.DataPassed += Form4_DataPassed;
-            //form4.Show();
 
             Logowanie nowe_okno = new Logowanie(this);
             nowe_okno.Show();
@@ -49,6 +35,7 @@ namespace Gra
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //nyan cat
             NyanCat nowe_okno = new NyanCat(this);
             nowe_okno.ShowDialog();
 

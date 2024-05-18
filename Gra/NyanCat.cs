@@ -25,7 +25,7 @@ namespace Gra
         int serca = 4;
         int score = 0;
         private Random random = new Random();
-        private int stepSize = 7; // Rozmiar kroku przesunięcia
+        private int stepSize = 4; // Rozmiar kroku przesunięcia
         private int milisek = 50;
         
         public NyanCat(Form1 parent)
@@ -163,22 +163,30 @@ namespace Gra
             foreach (var pictureBox in pictureBoxes)
             {
                 int currentX = pictureBox.Location.X;
-                //rozne szybkosci meteorow dla trudnosci
-                if (interval % 2 == 0)
+                // Rozne kierunki meteorow dla trudnosci
+                if (interval % 3 == 0)
                 {
-                    // przesuwanie w prawo o stepSize pikseli
+                    // Przesuwanie w lewo o stepSize pikseli
+                    pictureBox.Location = new Point(currentX - stepSize, pictureBox.Location.Y);
+                }
+                else
+                {
+                    // Przesuwanie w prawo o stepSize pikseli
                     pictureBox.Location = new Point(currentX + stepSize, pictureBox.Location.Y);
                 }
-                else { pictureBox.Location = new Point(currentX + stepSize + 3, pictureBox.Location.Y); }
 
-                // przenieś na początek
+                // Przenies na początek/końiec
                 if (pictureBox.Location.X > this.ClientSize.Width)
                 {
                     pictureBox.Location = new Point(0, pictureBox.Location.Y);
                 }
+                else if (pictureBox.Location.X < 0)
+                {
+                    pictureBox.Location = new Point(this.ClientSize.Width, pictureBox.Location.Y);
+                }
                 interval++;
-                Refresh();
             }
+            Refresh();
             //jesli nyancat nalozy sie z ktoryms to odejmuje serce
             foreach (PictureBox pictureBox in pictureBoxes)
             {
