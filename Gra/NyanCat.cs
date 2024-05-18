@@ -305,6 +305,10 @@ namespace Gra
                 this.Controls.Add(labelScore);
                 musicPlayer.Stop();
                 musicPlayer.Dispose(); // Zwolnienie zasobów
+
+                parent.SCORE = score;
+                parent.RODZAJ = "NyanCat";
+                parent.Zapis_do_CSV();
             }
         }
 

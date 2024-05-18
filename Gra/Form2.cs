@@ -7,12 +7,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Formats.Asn1.AsnWriter;
 using Timer = System.Windows.Forms.Timer;
 
 namespace Gra
 {
     public partial class Form2 : Form
     {
+        Form1 parent;
         bool allowClick = false;
         Random rnd = new Random();
         PictureBox firstGuess;
@@ -20,10 +22,10 @@ namespace Gra
         int time = 60;
         Timer timer = new Timer { Interval = 1000 };
 
-        public Form2()
+        public Form2(Form1 parent)
         {
             InitializeComponent();
-
+            this.parent = parent;
         }
 
         private PictureBox[] pictureBoxes
@@ -68,6 +70,11 @@ namespace Gra
                     timer.Stop();
                     clickTimer.Stop();
                     MessageBox.Show("Koniec czasu");
+                    //ZAPIS WYNIKU
+                    parent.SCORE = 0;
+                    parent.RODZAJ = "Memory";
+                    parent.Zapis_do_CSV();
+                    //////////////////
                     ResetImages();
                 }
                 var ssTime = TimeSpan.FromSeconds(time);
@@ -166,6 +173,11 @@ namespace Gra
             firstGuess = null;
             if (pictureBoxes.Any(p => p.Visible)) return;
             MessageBox.Show("Gratulacje");
+            //ZAPIS WYNIKU
+            parent.SCORE = 1;
+            parent.RODZAJ = "Memory";
+            parent.Zapis_do_CSV();
+            ////////////////////////
             ResetImages();
 
         }

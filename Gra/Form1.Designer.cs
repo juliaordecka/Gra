@@ -92,7 +92,7 @@
             button4.BackColor = SystemColors.Info;
             button4.Font = new Font("Rockwell", 15.75F, FontStyle.Bold | FontStyle.Italic);
             button4.Location = new Point(203, 173);
-            button4.Margin = new Padding(1, 1, 1, 1);
+            button4.Margin = new Padding(1);
             button4.Name = "button4";
             button4.Size = new Size(134, 35);
             button4.TabIndex = 4;
@@ -105,12 +105,13 @@
             button5.BackColor = SystemColors.Info;
             button5.Font = new Font("Rockwell", 15.75F, FontStyle.Bold | FontStyle.Italic);
             button5.Location = new Point(364, 173);
-            button5.Margin = new Padding(1, 1, 1, 1);
+            button5.Margin = new Padding(1);
             button5.Name = "button5";
             button5.Size = new Size(134, 35);
             button5.TabIndex = 5;
             button5.Text = "Ranking";
             button5.UseVisualStyleBackColor = false;
+            button5.Click += button5_Click;
             // 
             // label2
             // 
@@ -163,7 +164,7 @@
         private Button button3;
         private Button button4;
         private Button button5;
-        private Label label2;
         private Label label3;
+        public Label label2;
     }
 }
