@@ -15,6 +15,7 @@ namespace Gra
 {
     public partial class Form3 : Form
     {
+        Form1 parent;
         public List<PictureBox> pictureBoxes = new List<PictureBox>();
         public List<PictureBox> activeBoxes = new List<PictureBox>();
         public int seconds = 0;
@@ -26,10 +27,11 @@ namespace Gra
         public int score = 0;
         public int life = 4;
 
-        public Form3()
+        public Form3(Form1 parent)
         {
             InitializeComponent();
             MakeBoard();
+            this.parent = parent;
         }
 
         private void MakeBoard()
@@ -56,12 +58,22 @@ namespace Gra
             {
                 game_timer.Stop();
                 MessageBox.Show("Score: " + score, "Game Over");
+                //ZAPIS WYNIKU
+                parent.SCORE = score;
+                parent.RODZAJ = "Walnij dydelfa";
+                parent.Zapis_do_CSV();
+                //////////////////
                 this.Close();
             }
             if (life == 0)
             {
                 game_timer.Stop();
                 MessageBox.Show("Score: " + score, "Game Over");
+                //ZAPIS WYNIKU
+                parent.SCORE = score;
+                parent.RODZAJ = "Walnij dydelfa";
+                parent.Zapis_do_CSV();
+                //////////////////
                 this.Close();
             }
             Renew();
