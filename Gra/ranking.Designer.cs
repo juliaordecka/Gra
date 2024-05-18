@@ -34,7 +34,9 @@
             // 
             // dataGridViewRanking
             // 
+            dataGridViewRanking.BackgroundColor = SystemColors.GradientActiveCaption;
             dataGridViewRanking.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewRanking.GridColor = SystemColors.MenuHighlight;
             dataGridViewRanking.Location = new Point(41, 41);
             dataGridViewRanking.Name = "dataGridViewRanking";
             dataGridViewRanking.Size = new Size(415, 269);
@@ -44,6 +46,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(505, 348);
             Controls.Add(dataGridViewRanking);
             Name = "ranking";

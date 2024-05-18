@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             cofnij = new Button();
-            this.zapisz = new Button();
+            zapisz = new Button();
             infoLabel = new Label();
             label1 = new Label();
             nickname = new TextBox();
@@ -47,17 +47,17 @@
             cofnij.UseVisualStyleBackColor = true;
             cofnij.Click += cofnij_Click;
             // 
-            // zaloguj
+            // zapisz
             // 
-            this.zapisz.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
-            this.zapisz.Location = new Point(181, 191);
-            this.zapisz.Margin = new Padding(2);
-            this.zapisz.Name = "zapisz";
-            this.zapisz.Size = new Size(112, 33);
-            this.zapisz.TabIndex = 9;
-            this.zapisz.Text = "Zaloguj";
-            this.zapisz.UseVisualStyleBackColor = true;
-            this.zapisz.Click += this.zapisz_Click;
+            zapisz.Font = new Font("Rockwell", 12F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 238);
+            zapisz.Location = new Point(181, 191);
+            zapisz.Margin = new Padding(2);
+            zapisz.Name = "zapisz";
+            zapisz.Size = new Size(112, 33);
+            zapisz.TabIndex = 9;
+            zapisz.Text = "Zaloguj";
+            zapisz.UseVisualStyleBackColor = true;
+            zapisz.Click += zapisz_Click;
             // 
             // infoLabel
             // 
@@ -92,9 +92,10 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             ClientSize = new Size(610, 318);
             Controls.Add(cofnij);
-            Controls.Add(this.zapisz);
+            Controls.Add(zapisz);
             Controls.Add(infoLabel);
             Controls.Add(label1);
             Controls.Add(nickname);
