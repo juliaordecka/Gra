@@ -66,6 +66,7 @@ namespace Gra
                 if (time == 0)
                 {
                     timer.Stop();
+                    clickTimer.Stop();
                     MessageBox.Show("Koniec czasu");
                     ResetImages();
                 }
@@ -126,6 +127,8 @@ namespace Gra
 
         private void wyjdz_Click(object sender, EventArgs e)
         {
+            clickTimer.Stop();
+            timer.Stop();
             this.Close();
         }
 
