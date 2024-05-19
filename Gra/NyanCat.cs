@@ -40,7 +40,7 @@ namespace Gra
             this.BackgroundImage = backgroundImage;
             this.BackgroundImageLayout = ImageLayout.Stretch;
             this.KeyDown += Nyan_KeyDown;
-            PlayMusic("NyanCatMusic.wav");
+            PlayMusic("Resources/NyanCatMusic.wav");
             this.FormClosed += new FormClosedEventHandler(NyanCat_FormClosed);
         }
         SoundPlayer musicPlayer = new SoundPlayer();
